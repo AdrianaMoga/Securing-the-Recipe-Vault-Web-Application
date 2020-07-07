@@ -1,0 +1,37 @@
+# Identify tools that will allow you to do the following:
+
+1. ## Scan infrastructure as code templates
+
+- CFripper is a Python tool that aims to prevent vulnerabilities from getting to production infrastructure through vulnerable CloudFormation scripts.
+CFripper is part of the CI/CD pipeline
+It runs just before a CloudFormation stack is deployed or updated and if the CloudFormation script fails to pass the security check it fails the deployment and notifies the team that owns the stack.
+
+Reference: https://pypi.org/project/cfripper/0.7.1/
+
+### Example vulnerability
+	- Ingress from all IP addresses and ports (0.0.0.0/0)
+	- All trafic is allowed
+
+2. ## Scan AMI’s or containers for OS vulnerabilities
+
+- Anchore Engine - Is an open source tool that scans Docker image for security vulnerabilities.
+It can be used across multiple platforms.
+
+References: https://anchore.com/opensource/
+
+### Example vulnerability
+- Distro Version: unstable
+- Insecure libraries and packages
+
+3. ## Scan an AWS environment for cloud configuration vulnerabilities
+
+- AWS Config
+- AWS inspector
+- Security Hub
+- GuardDuty
+
+### Example vulnerability
+- Remote Root login enabled, Accessbility of EC2 from internet
+- Unencrypted Storage
+- Bruteforce, insecure configuration for Security Groups
+

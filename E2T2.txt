@@ -1,0 +1,39 @@
+Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
+Bonus - provide recommendations on how to remediate the vulnerabilities.
+
+Security Vulnerabilities
+
+Critical:
+- MFA is not enabled for the "root" account, root account access key exists
+- RDS instances are public
+- root user access key is available
+- IAM policies that allow full "*:*" administrative privileges are not created
+- Bitbucket source repository URL contains username and password, AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.
+
+Medium:
+- AWS Multi-Factor Authentication (MFA) is not enabled 
+- S3 bucket don't have encryption enabled 
+- IAM password policy is not set
+- The VPC default security group allow inbound and outbound traffic
+
+Low:
+- Web instances has one process listening on TCP port 22, which is associated with SSH service and is reachable from the internet 
+- Instance i-09a2e3cff55622b29 is configured to allow users to log in with root credentials over SSH, without having to use a command authenticated by a public key. This increaseS a successful brute-force attack.
+ 
+
+Recommendations
+- Hardware MFA should be enabled for the root user
+- RDS DB Instances should prohibit public access
+- IAM root user access key should not exist
+- Bitbucket source repository URLs should use OAuth
+- CodeBuild project environment variables should not contain clear text credentials
+- no security group allows unrestricted ingress from 0.0.0.0/0 to port 22 and 3389
+- MFA should be enabled for all IAM users that have console password
+- S3 buckets should have server-side encryption enabled
+- S3 Block Public Access setting should be enabled
+- IAM password policy requires at least one lowercase letter and at least one symbol
+- Password policies for IAM users should have strong configurations
+- Application Load Balancer should be configured to redirect all HTTP requests to HTTPS
+- The VPC default security group should not allow inbound and outbound traffic
+- Configure EC2 instances to prevent root account logins over SSH. Disable SSH root account logins.
+

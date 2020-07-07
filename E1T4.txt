@@ -1,0 +1,10 @@
+
+Poor Security Practices
+
+1. The server-side encryption has not been activated for S3 buckets. S3 buckets contents can be accesible from unauthorized users.
+Also, the web server should be running on HTTPS/443. 
+IAM role has full access to all resources. 
+
+2. In the network side, public and private subnet ACL rules allow all traffic. The network infrastructure could be easily compromised.
+
+
